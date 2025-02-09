@@ -15,6 +15,7 @@ export default {
         backgroundLight: 'var(--background-light)',
         backgroundGreen: 'var(--background-green)',
         textWhite: 'var(--text-white)',
+        textDark: 'var(--text-dark)',
         textGreen: 'var(--text-green)',
       },
     },

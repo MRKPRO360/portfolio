@@ -1,5 +1,3 @@
-'use client';
-
 import {
   RiFacebookFill,
   RiGithubFill,
@@ -10,27 +8,8 @@ import bg from '../../../assets/images/hero.jpg';
 import profile from '../../../assets/images/profile.jpg';
 import Cta from '../Cta/Cta';
 import Image from 'next/image';
-import styles from './Banner.module.css';
-import { useRef, useState } from 'react';
 
 function Banner() {
-  const [rotation, setRotation] = useState({ x: 0, y: 0 });
-  const containerRef = useRef<HTMLDivElement | null>(null);
-
-  const handleMouseMove = (e) => {
-    if (!containerRef.current) return;
-
-    const { left, top, width, height } =
-      containerRef.current.getBoundingClientRect();
-    const y = ((e.clientX - left - width / 2) / width) * 80; // Adjust sensitivity
-    const x = ((e.clientY - top - height / 2) / height) * 80; // Adjust sensitivity
-    setRotation({ x: y, y: x });
-  };
-
-  const handleMouseLeave = () => {
-    setRotation({ x: 0, y: 0 });
-  };
-
   return (
     <div
       style={{
@@ -38,29 +17,31 @@ function Banner() {
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'top',
-        height: '75vh',
+        minHeight: '75vh',
       }}
     >
-      <div className="max-w-screen-xl mx-auto mt-32">
-        <div className="flex sm:gap-10 justify-between">
-          <div className="space-y-4 w-[50%]">
-            <div className="flex items-center gap-2">
+      <div className="max-w-screen-xl px-3 xl:px-0 mx-auto mt-10 md:mt-32">
+        <div className="flex flex-col-reverse md:flex-row gap-10 justify-between">
+          <div className=" md:w-[50%] flex flex-col justify-between ">
+            {/* GHOST */}
+            <div className="hidden md:block h-0 md:h-8 "></div>
+            <div className="flex items-center  md:gap-2 md:mb-0">
               <span className="inline-block w-12 h-[3px] bg-backgroundGreen"></span>
               <span className="uppercase">Hello I&apos;m,</span>
             </div>
-            <h1 className="text-5xl font-extrabold">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold">
               <span className="text-textGreen">Md Rezaul!</span>
               <br />
-              <span className="my-4 inline-block">Jr. Full Stack Web</span>
+              <span className="inline-block my-3">Jr. Full Stack Web</span>
               <br />
               <span>Developer</span>
             </h1>
-            <p>
+            <p className="mt-4 mb-3 md:my-0">
               Web developer based in Bangladesh. I am adventurous person and I
               am ready for the next challenge!
             </p>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-5">
               <Cta text="Contact Me" />
               <div className="flex items-center gap-x-3 text-2xl">
                 <RiFacebookFill className="hover:text-textGreen transform hover:scale-125 transition duration-300 cursor-pointer" />
@@ -70,22 +51,11 @@ function Banner() {
               </div>
             </div>
           </div>
-          <div
-            ref={containerRef}
-            className="relative basis-96 h-[450px] perspective-1000"
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-          >
-            <div
-              className="w-full h-full transition-transform duration-200 ease-out"
-              style={{
-                transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
-                transformStyle: 'preserve-3d',
-              }}
-            >
+          <div className="relative basis-96 h-[450px] ">
+            <div className="w-full h-full transition-transform duration-200 ease-out">
               <Image
                 fill
-                className={`object-cover object-top rounded-md ${styles.tiltBox} `}
+                className={`object-cover object-top rounded-md`}
                 src={profile.src}
                 alt="rezaul avatar"
               />

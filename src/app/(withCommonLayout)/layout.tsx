@@ -5,7 +5,7 @@ function HomePageLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="max-w-[1526px] mx-auto">
       <Navbar />
-      {children}
+      <div>{children}</div>
       <Footer />
     </div>
   );

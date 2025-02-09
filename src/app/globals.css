@@ -8,9 +8,10 @@
   --background-light: rgb(46, 46, 46);
 
   --foreground: #fff;
-  --text-green: #05614d;
-  --background-green: #05614d;
+  --text-green: #2dd081;
+  --background-green: #2dd081;
   --text-white: #fff;
+  --text-dark: rgb(19, 19, 19);
 }
 
 /* @media (prefers-color-scheme: dark) {
