@@ -4,21 +4,24 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --text-primary: #05614d;
+  --background-dark: rgb(19, 19, 19);
+  --background-light: rgb(46, 46, 46);
+
+  --foreground: #fff;
+  --text-green: #05614d;
+  --background-green: #05614d;
   --text-white: #fff;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #1a1a1a;
     --foreground: #fff;
   }
-}
+} */
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: var(--background-dark);
   font-family: 'Nunito', serif;
 }
