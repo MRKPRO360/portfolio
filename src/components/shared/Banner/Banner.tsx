@@ -6,7 +6,7 @@ import {
 } from 'react-icons/ri';
 import bg from '../../../assets/images/hero.jpg';
 import profile from '../../../assets/images/profile.jpg';
-import Cta from '../Cta/Cta';
+import Cta from '../../Cta/Cta';
 import Image from 'next/image';
 
 function Banner() {
@@ -29,7 +29,7 @@ function Banner() {
               <span className="inline-block w-12 h-[3px] bg-backgroundGreen"></span>
               <span className="uppercase">Hello I&apos;m,</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-textWhite">
               <span className="text-textGreen">Md Rezaul!</span>
               <br />
               <span className="inline-block my-3">Jr. Full Stack Web</span>
@@ -43,7 +43,7 @@ function Banner() {
 
             <div className="flex items-center gap-5">
               <Cta text="Contact Me" />
-              <div className="flex items-center gap-x-3 text-2xl">
+              <div className="flex items-center gap-x-3 text-2xl text-textWhite">
                 <RiFacebookFill className="hover:text-textGreen transform hover:scale-125 transition duration-300 cursor-pointer" />
                 <RiLinkedinFill className="hover:text-textGreen transform hover:scale-125 transition duration-300 cursor-pointer" />
                 <RiGithubFill className="hover:text-textGreen transform hover:scale-125 transition duration-300 cursor-pointer" />

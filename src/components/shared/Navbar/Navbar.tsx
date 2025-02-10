@@ -26,7 +26,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import Cta from '../Cta/Cta';
+import Cta from '../../Cta/Cta';
 
 const navItems = ['Home', 'Projects', 'Blog', 'About'];
 

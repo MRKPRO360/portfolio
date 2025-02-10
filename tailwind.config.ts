@@ -17,6 +17,7 @@ export default {
         textWhite: 'var(--text-white)',
         textDark: 'var(--text-dark)',
         textGreen: 'var(--text-green)',
+        textGray: 'var(--text-gray)',
       },
     },
   },
