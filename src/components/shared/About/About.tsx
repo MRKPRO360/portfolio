@@ -7,7 +7,10 @@ import badge from '../../../assets/images/badge-2.svg';
 
 function About() {
   return (
-    <div className="max-w-screen-xl px-3 xl:px-0 mx-auto my-20 md:my-28">
+    <div
+      id="about"
+      className="max-w-screen-xl px-3 xl:px-0 mx-auto my-20 md:my-28"
+    >
       <div className="md:flex justify-between">
         <div className="flex-1 h-[380px] sm:h-[400px] md:h-[435px] relative">
           <Image

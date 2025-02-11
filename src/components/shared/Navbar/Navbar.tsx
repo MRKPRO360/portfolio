@@ -1,38 +1,24 @@
-// import Cta from '../Cta/Cta';
-
-// const navItems = ['Home', 'Projects', 'Blog', 'About'];
-// function Navbar() {
-//   return (
-//     <nav>
-//       <div className="max-w-screen-xl mx-auto md:flex items-center justify-between border-b-[1.5px] border-backgroundLight py-3">
-//         <h1 className="text-xl sm:text-2xl font-semibold">Md Rezaul</h1>
-//         <ul className="flex justify-between items-center md:gap-x-14 sm:text-lg">
-//           {navItems.map((item, index) => (
-//             <li key={index}>
-//               <a href="#">{item}</a>
-//             </li>
-//           ))}
-//           <Cta text="Download CV" />
-//         </ul>
-//       </div>
-//     </nav>
-//   );
-// }
-
-// export default Navbar;
-
 'use client';
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Cta from '../../Cta/Cta';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-const navItems = ['Home', 'Projects', 'Blog', 'About'];
+const pageNavItems = [
+  { text: 'Home', path: '/' },
+  { text: 'Projects', path: '/dashboard/project' },
+  { text: 'Blog', path: '/dashboard/blog' },
+];
+// 'Home', 'Projects', 'Blog', 'About'
+
+const homeNavItems = [{ text: 'About', path: '#about' }];
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-
+  const pathName = usePathname();
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (isOpen && !(e.target as HTMLElement).closest('.sidebar')) {
@@ -55,9 +41,21 @@ function Navbar() {
           </button>
         </div>
         <ul className="hidden md:flex justify-between items-center md:gap-x-14 sm:text-lg">
-          {navItems.map((item, index) => (
+          {pageNavItems.map((item, index) => (
             <li key={index}>
-              <a href="#">{item}</a>
+              <Link
+                className={`block ${
+                  item.path === pathName ? 'text-textGreen' : 'text-textGray'
+                }`}
+                href={item.path}
+              >
+                {item.text}
+              </Link>
+            </li>
+          ))}
+          {homeNavItems.map((item, index) => (
+            <li key={index}>
+              <a href={item.path}>{item.text}</a>
             </li>
           ))}
           <Cta text="Download CV" />
@@ -77,10 +75,10 @@ function Navbar() {
           <X size={28} />
         </button>
         <ul className="mt-10 space-y-6 text-lg text-textDark">
-          {navItems.map((item, index) => (
+          {homeNavItems.map((item, index) => (
             <li key={index}>
               <a href="#" onClick={() => setIsOpen(false)}>
-                {item}
+                {item.text}
               </a>
             </li>
           ))}
