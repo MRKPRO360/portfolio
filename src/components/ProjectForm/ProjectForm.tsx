@@ -1,16 +1,9 @@
 'use client';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-
-interface ProjectFormInputs {
-  name: string;
-  details: string;
-  liveLink: string;
-  githubLink: string;
-  technologies: string;
-  coverImage: FileList;
-  projectImages: FileList;
-}
+import Cta from '../Cta/Cta';
+import { createProject } from '@/actions/createProject';
+import { ProjectFormInputs } from '@/types/project.interface';
 
 function ProjectForm() {
   const {
@@ -20,7 +13,6 @@ function ProjectForm() {
     formState: { errors },
   } = useForm<ProjectFormInputs>();
   const [loading, setLoading] = useState(false);
-  const token = 'your-auth-token'; // Replace with actual token
 
   const onSubmit = async (data: ProjectFormInputs) => {
     const formData = new FormData();
@@ -47,23 +39,21 @@ function ProjectForm() {
       formData.append('projectImages', file);
     });
 
+    // for (const [key, value] of formData.entries()) {
+    //   console.log(`${key}:`, value);
+    // }
+
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:5000/api/v1/projects', {
-        method: 'POST',
-        body: formData,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await createProject(formData);
+      console.log(res);
 
-      const result = await response.json();
-      if (response.success) {
-        alert('Project Created Successfully!');
-        reset(); // Reset the form
-      } else {
-        alert(result.message || 'Something went wrong');
-      }
+      // if (res) {
+      //   alert('Project Created Successfully!');
+      //   reset(); // Reset the form
+      // } else {
+      //   alert(res.message || 'Something went wrong');
+      // }
     } catch (error) {
       console.error('Upload failed:', error);
     } finally {
@@ -78,85 +68,91 @@ function ProjectForm() {
     >
       <h2 className="text-xl font-bold mb-4">Upload Project</h2>
 
-      <label className="block mb-2">
-        Project Name:
-        <input
-          placeholder="Your project name"
-          {...register('name', { required: 'Project name is required' })}
-          className="border p-2 w-full rounded text-backgroundDark "
-        />
-        {errors.name && <p className="text-red-500">{errors.name.message}</p>}
-      </label>
+      <div className="space-y-3 md:space-y-5">
+        <label className="block mb-2">
+          Project Name:
+          <input
+            placeholder="Your project name"
+            {...register('name', { required: 'Project name is required' })}
+            className="border p-2 w-full rounded text-backgroundDark "
+          />
+          {errors.name && <p className="text-red-500">{errors.name.message}</p>}
+        </label>
 
-      <label className="block mb-2">
-        Details:
-        <textarea
-          {...register('details', { required: 'Project details are required' })}
-          className="border p-2 w-full rounded text-backgroundDark "
-        />
-        {errors.details && (
-          <p className="text-red-500">{errors.details.message}</p>
-        )}
-      </label>
+        <label className="block mb-2">
+          Details:
+          <textarea
+            {...register('details', {
+              required: 'Project details are required',
+            })}
+            placeholder="Your project details"
+            className="border p-2 w-full rounded text-backgroundDark "
+          />
+          {errors.details && (
+            <p className="text-red-500">{errors.details.message}</p>
+          )}
+        </label>
 
-      <label className="block mb-2">
-        Live Link:
-        <input
-          {...register('liveLink')}
-          className="border p-2 w-full rounded text-backgroundDark "
-        />
-      </label>
+        <label className="block mb-2">
+          Live Link:
+          <input
+            placeholder="Your project live link"
+            {...register('liveLink')}
+            className="border p-2 w-full rounded text-backgroundDark "
+          />
+        </label>
 
-      <label className="block mb-2">
-        GitHub Link:
-        <input
-          {...register('githubLink')}
-          className="border p-2 w-full rounded text-backgroundDark "
-        />
-      </label>
+        <label className="block mb-2">
+          GitHub Link:
+          <input
+            {...register('githubLink')}
+            placeholder="Your project github link"
+            className="border p-2 w-full rounded text-backgroundDark "
+          />
+        </label>
 
-      <label className="block mb-2">
-        Technologies (comma-separated):
-        <input
-          {...register('technologies')}
-          className="border p-2 w-full rounded text-backgroundDark "
-        />
-      </label>
+        <label className="block mb-2">
+          Technologies (comma-separated):
+          <input
+            placeholder="exmp. React, Node, ..."
+            {...register('technologies')}
+            className="border p-2 w-full rounded text-backgroundDark "
+          />
+        </label>
 
-      <label className="block mb-2">
-        Cover Image:
-        <input
-          {...register('coverImage', { required: 'Cover image is required' })}
-          type="file"
-          className="border p-2 w-full rounded text-backgroundDark "
-        />
-        {errors.coverImage && (
-          <p className="text-red-500">{errors.coverImage.message}</p>
-        )}
-      </label>
+        <label className="block mb-2">
+          Cover Image:
+          <input
+            {...register('coverImage', { required: 'Cover image is required' })}
+            type="file"
+            className="border p-2 w-full rounded text-backgroundDark "
+          />
+          {errors.coverImage && (
+            <p className="text-red-500">{errors.coverImage.message}</p>
+          )}
+        </label>
 
-      <label className="block mb-2">
-        Project Images (Multiple):
-        <input
-          {...register('projectImages', {
-            required: 'At least one project image is required',
-          })}
-          type="file"
-          multiple
-          className="border p-2 w-full rounded text-backgroundDark "
-        />
-        {errors.projectImages && (
-          <p className="text-red-500">{errors.projectImages.message}</p>
-        )}
-      </label>
+        <label className="block mb-2">
+          Project Images (Multiple):
+          <input
+            {...register('projectImages', {
+              required: 'At least one project image is required',
+            })}
+            type="file"
+            multiple
+            className="border p-2 w-full rounded text-backgroundDark "
+          />
+          {errors.projectImages && (
+            <p className="text-red-500">{errors.projectImages.message}</p>
+          )}
+        </label>
 
-      <button
-        type="submit"
-        className="bg-blue-500 text-white p-2 rounded w-full mt-4"
-        disabled={loading}
-      >
-        {loading ? 'Uploading...' : 'Submit'}
-      </button>
+        <Cta
+          color="dark"
+          text={loading ? 'Uploading...' : 'Submit'}
+          disabled={loading}
+        ></Cta>
+      </div>
     </form>
   );
 }

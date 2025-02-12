@@ -7,8 +7,6 @@ let sidebarItems: ISidebarItems[] = [];
 function Layout({ children }: { children: React.ReactNode }) {
   const pathName = usePathname();
 
-  console.log(pathName);
-
   if (pathName === '/dashboard/project') {
     sidebarItems = [
       {
@@ -36,8 +34,12 @@ function Layout({ children }: { children: React.ReactNode }) {
         path: '/',
       },
       {
+        text: 'Blog',
+        path: '/dashboard/blog',
+      },
+      {
         text: 'Add Blog',
-        path: '/addBlog',
+        path: '/dashboard/blog/addBlog',
       },
     ];
   } else if (pathName === '/dashboard/message') {
