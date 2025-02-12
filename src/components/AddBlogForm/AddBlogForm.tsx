@@ -5,6 +5,7 @@ import Cta from '../Cta/Cta';
 import { useState } from 'react';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
+import { Upload } from 'lucide-react';
 
 function AddBlogForm() {
   const [loading, setLoading] = useState(false);
@@ -62,7 +63,7 @@ function AddBlogForm() {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-6 bg-backgroundLight shadow-md rounded-lg">
+    <div className="max-w-lg mt-4 mx-auto p-6 bg-backgroundLight shadow-md rounded-lg">
       <h2 className="text-xl font-semibold mb-4">Create a Blog Post</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div>
@@ -126,16 +127,19 @@ function AddBlogForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium">Blog Image</label>
-          <input
-            {...register('blogImageData', {
-              required: 'Blog image is required',
-            })}
-            type="file"
-            className="border p-2 w-full rounded text-backgroundDark "
-          />
+          <label className="border p-2 w-full rounded flex items-center gap-2 cursor-pointer bg-gray-100 hover:bg-gray-200">
+            <Upload className="w-5 h-5 text-gray-600" />
+            <span className="text-gray-700">Upload blog image</span>
+            <input
+              {...register('blogImageData', {
+                required: 'Blog image is required',
+              })}
+              type="file"
+              className="hidden"
+            />
+          </label>
           {errors.blogImageData && (
-            <p className="text-red-500 text-sm">
+            <p className="text-red-500 text-sm mt-1">
               {errors.blogImageData.message}
             </p>
           )}

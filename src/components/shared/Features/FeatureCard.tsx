@@ -14,7 +14,7 @@ function FeatureCard({
 }) {
   return (
     <div
-      className={`border border-backgroundLight px-5 py-8 md:py-12 rounded-sm ${
+      className={`border border-backgroundLight px-5 py-8 md:py-12 rounded-sm transition duration-500  hover:shadow-lg hover:shadow-backgroundLight ${
         index === 1 && 'lg:transfrom lg:-translate-y-5'
       }`}
     >

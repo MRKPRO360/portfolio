@@ -44,7 +44,7 @@ function Navbar() {
           {pageNavItems.map((item, index) => (
             <li key={index}>
               <Link
-                className={`block ${
+                className={`block hover:text-textGreen transition duration-300 ${
                   item.path === pathName ? 'text-textGreen' : 'text-textGray'
                 }`}
                 href={item.path}
@@ -54,7 +54,10 @@ function Navbar() {
             </li>
           ))}
           {homeNavItems.map((item, index) => (
-            <li key={index}>
+            <li
+              className="hover:text-textGreen transition duration-300"
+              key={index}
+            >
               <a href={item.path}>{item.text}</a>
             </li>
           ))}
