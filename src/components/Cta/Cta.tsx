@@ -13,7 +13,7 @@ function Cta({
     <button
       disabled={disabled}
       type="submit"
-      className={`py-2 bg-backgroundGreen px-2 rounded-sm font-bold ${
+      className={`py-2 bg-backgroundGreen px-2 rounded-sm font-bold cursor-pointer ${
         color === 'light' ? 'text-textWhite' : 'text-textDark'
       } ${fullWidth && 'w-full block'} `}
     >

@@ -7,12 +7,18 @@ import Cta from '../../Cta/Cta';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-const pageNavItems = [
-  { text: 'Home', path: '/' },
+const privateNavItems = [
   { text: 'Projects', path: '/dashboard/project' },
   { text: 'Blog', path: '/dashboard/blog' },
+  { text: 'Contact', path: '/dashboard/contact' },
 ];
-// 'Home', 'Projects', 'Blog', 'About'
+
+const publicNavItems = [
+  { text: 'Home', path: '/' },
+  { text: 'Projects', path: '/project' },
+  { text: 'Blog', path: '/blog' },
+  { text: 'Contact', path: '/contact' },
+];
 
 const homeNavItems = [{ text: 'About', path: '#about' }];
 
@@ -41,7 +47,7 @@ function Navbar() {
           </button>
         </div>
         <ul className="hidden md:flex justify-between items-center md:gap-x-14 sm:text-lg">
-          {pageNavItems.map((item, index) => (
+          {publicNavItems.map((item, index) => (
             <li key={index}>
               <Link
                 className={`block hover:text-textGreen transition duration-300 ${
