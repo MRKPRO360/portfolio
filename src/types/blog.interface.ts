@@ -6,3 +6,14 @@ export interface BlogFormInput {
   isDeleted?: boolean;
   author: string;
 }
+
+export interface IBlog {
+  _id: string;
+  title: string;
+  content: string;
+  blogImage: string;
+  tag: string;
+  isDeleted?: boolean;
+  author: string;
+  createdAt: string;
+}

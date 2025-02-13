@@ -46,10 +46,9 @@ function Layout({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div>
+    <div className="flex flex-col">
       <Sidebar items={sidebarItems} />
-
-      <div>{children}</div>
+      <div className="md:ml-[200px] flex-1 my-10 mx-4 md:mx-0">{children}</div>
     </div>
   );
 }
