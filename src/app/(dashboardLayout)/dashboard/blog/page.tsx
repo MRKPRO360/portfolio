@@ -1,12 +1,15 @@
 import BlogPostCard from '@/components/Blog/BlogPostCard';
 import TextHeading from '@/components/TextHeading/TextHeading';
 import { IBlog } from '@/types';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Blog | Explore Life',
+};
 
 async function DashboardBlogPage() {
   const res = await fetch('http://localhost:5000/api/v1/blogs', {
-    next: {
-      revalidate: 30,
-    },
+    cache: 'no-store',
   });
 
   const blogs = await res.json();

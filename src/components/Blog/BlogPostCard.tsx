@@ -2,6 +2,7 @@ import { IBlog } from '@/types';
 import Image from 'next/image';
 import { FaUser, FaCalendarAlt, FaTag } from 'react-icons/fa';
 import Cta from '../Cta/Cta';
+import Link from 'next/link';
 
 const BlogPostCard = ({ post }: { post: IBlog }) => {
   return (
@@ -35,10 +36,10 @@ const BlogPostCard = ({ post }: { post: IBlog }) => {
           <FaTag className="mr-1" />
           <span>{post.tag}</span>
         </div>
-        {/* <button className="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition">
-          Read More
-        </button> */}
-        <Cta fullWidth text="Read More" />
+
+        <Link href={`/dashboard/blog/${post._id}`}>
+          <Cta fullWidth text="Read More" />
+        </Link>
       </div>
     </div>
   );
