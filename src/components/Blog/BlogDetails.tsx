@@ -13,7 +13,7 @@ const BlogDetails = ({ post }: { post: IBlog }) => {
 
   const handleEdit = () => {
     // Navigate to edit page
-    router.push(`dashboard/blog/edit/${post._id}`);
+    router.push(`/dashboard/blog/edit/${post._id}`);
   };
 
   const handleDelete = () => {
