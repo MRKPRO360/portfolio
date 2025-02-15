@@ -25,8 +25,6 @@ function UpdateBlogForm({ blogId }: { blogId: string }) {
   const onSubmit = async (data: BlogFormInput) => {
     const toastId = toast.loading('Updating ...');
 
-    console.log(data);
-
     try {
       setLoading(true);
 
@@ -43,10 +41,10 @@ function UpdateBlogForm({ blogId }: { blogId: string }) {
       setLoading(false);
 
       reset();
-      if (blogInfo.success)
+      if (blogInfo.success) {
         toast.success('Blog updated successfully', { id: toastId });
-      else toast.error(blogInfo.message, { id: toastId });
-      router.push('/dashboard/blog');
+        router.push('/dashboard/blog');
+      } else toast.error(blogInfo.message, { id: toastId });
     } catch (error) {
       console.error('Update failed:', error);
       toast.error('Something went wrong', { id: toastId });
@@ -93,7 +91,8 @@ function UpdateBlogForm({ blogId }: { blogId: string }) {
           <label className="block text-sm font-medium">Tag</label>
           <select
             {...register('tag')}
-            className="border p-2 w-full rounded text-backgroundDark "
+            className="border p-2 w-full rounded text-backgroundDark"
+            defaultValue={'Technology'}
           >
             {' '}
             <option value="">Select a tag</option>

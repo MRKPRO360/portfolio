@@ -8,15 +8,15 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const privateNavItems = [
-  { text: 'Projects', path: '/dashboard/project' },
-  { text: 'Blog', path: '/dashboard/blog' },
-  { text: 'Contact', path: '/dashboard/contact' },
+  { text: 'Projects', path: '/dashboard/projects' },
+  { text: 'Blogs', path: '/dashboard/blogs' },
+  { text: 'Messages', path: '/dashboard/messages' },
 ];
 
 const publicNavItems = [
   { text: 'Home', path: '/' },
-  { text: 'Projects', path: '/project' },
-  { text: 'Blog', path: '/blog' },
+  { text: 'Projects', path: '/projects' },
+  { text: 'Blogs', path: '/blogs' },
   { text: 'Contact', path: '/contact' },
 ];
 

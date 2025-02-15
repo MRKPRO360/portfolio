@@ -4,7 +4,13 @@ import { FaUser, FaCalendarAlt, FaTag } from 'react-icons/fa';
 import Cta from '../Cta/Cta';
 import Link from 'next/link';
 
-const BlogPostCard = ({ post }: { post: IBlog }) => {
+const BlogPostCard = ({
+  post,
+  isPublic = false,
+}: {
+  post: IBlog;
+  isPublic?: boolean;
+}) => {
   return (
     <div className="bg-backgroundLight text-textWhite rounded-sm shadow-lg overflow-hidden">
       <div className="relative w-full h-72">
@@ -37,9 +43,15 @@ const BlogPostCard = ({ post }: { post: IBlog }) => {
           <span>{post.tag}</span>
         </div>
 
-        <Link href={`/dashboard/blog/${post._id}`}>
-          <Cta fullWidth text="Read More" />
-        </Link>
+        {isPublic ? (
+          <Link href={`/blogs/${post._id}`}>
+            <Cta fullWidth text="Read More" />
+          </Link>
+        ) : (
+          <Link href={`/dashboard/blogs/${post._id}`}>
+            <Cta fullWidth text="Read More" />
+          </Link>
+        )}
       </div>
     </div>
   );

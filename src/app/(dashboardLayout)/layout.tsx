@@ -7,7 +7,7 @@ let sidebarItems: ISidebarItems[] = [];
 function Layout({ children }: { children: React.ReactNode }) {
   const pathName = usePathname();
 
-  if (pathName === '/dashboard/project') {
+  if (pathName === '/dashboard/projects') {
     sidebarItems = [
       {
         text: 'Home',
@@ -15,19 +15,19 @@ function Layout({ children }: { children: React.ReactNode }) {
       },
       {
         text: 'Project',
-        path: '/dashboard/project',
+        path: '/dashboard/projects',
       },
       {
         text: 'Add Project',
-        path: '/dashboard/project/addProject',
+        path: '/dashboard/projects/addProject',
       },
       {
         text: 'Update Project',
-        path: '/dashboard/project/updateProject',
+        path: '/dashboard/projects/updateProject',
       },
     ];
   } else if (pathName === '/dashboard/user') {
-  } else if (pathName === '/dashboard/blog') {
+  } else if (pathName === '/dashboard/blogs') {
     sidebarItems = [
       {
         text: 'Home',
@@ -35,20 +35,20 @@ function Layout({ children }: { children: React.ReactNode }) {
       },
       {
         text: 'Blog',
-        path: '/dashboard/blog',
+        path: '/dashboard/blogs',
       },
       {
         text: 'Add Blog',
-        path: '/dashboard/blog/addBlog',
+        path: '/dashboard/blogs/addBlog',
       },
     ];
-  } else if (pathName === '/dashboard/message') {
+  } else if (pathName === '/dashboard/messages') {
   }
 
   return (
     <div className="flex flex-col">
       <Sidebar items={sidebarItems} />
-      <div className="md:ml-[200px] flex-1 my-10 mx-4 md:mx-0">{children}</div>
+      <div className=" md:ml-[200px] flex-1 my-10 ml-4">{children}</div>
     </div>
   );
 }

@@ -53,7 +53,7 @@ function AddBlogForm() {
       if (blogInfo.success)
         toast.success('Blog added successfully', { id: toastId });
       else toast.error(blogInfo.message, { id: toastId });
-      router.push('/dashboard/blog');
+      router.push('/dashboard/blogs');
     } catch (error) {
       console.error('Upload failed:', error);
       toast.error('Something went wrong', { id: toastId });

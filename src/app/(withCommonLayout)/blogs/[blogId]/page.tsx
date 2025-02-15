@@ -1,5 +1,15 @@
 import BlogDetails from '@/components/Blog/BlogDetails';
+import { IBlog } from '@/types';
 
+export async function generateStaticParams() {
+  const res = await fetch('http://localhost:5000/api/v1/blogs');
+
+  const blog = await res.json();
+
+  return blog.data.slice(0, 3).map((blog: IBlog) => ({
+    blogId: blog._id,
+  }));
+}
 export async function generateMetadata({
   params,
 }: {
@@ -29,7 +39,7 @@ async function BlogDetailsPage({
 
   return (
     <div>
-      <BlogDetails post={blog.data} />
+      <BlogDetails isPublic={true} post={blog.data} />
     </div>
   );
 }

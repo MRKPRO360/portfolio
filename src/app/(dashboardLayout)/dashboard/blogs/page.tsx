@@ -15,7 +15,7 @@ async function DashboardBlogPage() {
   const blogs = await res.json();
 
   return (
-    <div className=" mx-auto">
+    <div className="2xl:max-w-[1526px] 2xl:mx-auto ">
       <div className="mb-8 text-center">
         <TextHeading text="All Blogs" />
       </div>
