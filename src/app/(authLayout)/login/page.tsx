@@ -20,7 +20,8 @@ const Login = () => {
         <button
           onClick={() =>
             signIn('google', {
-              callbackUrl: 'http://localhost:3000/dashboard/blogs',
+              callbackUrl:
+                'https://next-portolio-client.vercel.app/dashboard/blogs',
             })
           }
           className="flex items-center w-full p-3 mb-4 border rounded-lg hover:bg-backgroundDark transition"
@@ -31,7 +32,8 @@ const Login = () => {
         <button
           onClick={() =>
             signIn('github', {
-              callbackUrl: 'http://localhost:3000/dashboard/blogs',
+              callbackUrl:
+                'https://next-portolio-client.vercel.app/dashboard/blogs',
             })
           }
           className="flex items-center w-full p-3 border rounded-lg hover:bg-backgroundDark transition"
