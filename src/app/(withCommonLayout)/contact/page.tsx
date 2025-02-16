@@ -71,7 +71,7 @@ function ContactPage() {
             type="text"
             {...register('email', { required: 'Please provide your email!' })}
             className="border p-2 w-full rounded text-backgroundDark "
-            placeholder="Auhtor name exmp. James"
+            placeholder="Your email exmp. arthur@hotmail.com"
           />
           {errors.email && (
             <p className="text-red-500 text-sm">{errors.email.message}</p>

@@ -147,6 +147,7 @@ import { ISession } from '@/types';
 import { signOut } from 'next-auth/react';
 
 const publicNavItems = [
+  { text: 'Home', path: '/' },
   { text: 'Projects', path: '/projects' },
   { text: 'Blogs', path: '/blogs' },
   { text: 'Contact', path: '/contact' },
@@ -186,14 +187,16 @@ function Navbar({ session }: { session: ISession | null }) {
 
   return (
     <nav className="max-w-screen-xl px-3 xl:px-0 mx-auto border-b-[1.5px] border-backgroundLight py-3 relative">
-      <div className="flex items-center justify-between px-4 md:px-0">
-        <h1 className="text-xl sm:text-2xl font-semibold">Md Rezaul</h1>
+      <div className="flex items-center justify-between px-4 sm:px-2 md:px-0 flex-wrap">
+        <Link href="/">
+          <h1 className="text-xl sm:text-2xl font-semibold">Md Rezaul</h1>
+        </Link>
         <div className="md:hidden">
           <button onClick={() => setIsOpen(!isOpen)} className="menu-button">
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
-        <ul className="hidden md:flex justify-between items-center md:gap-x-14 sm:text-lg">
+        <ul className="hidden md:flex justify-between items-center md:gap-x-10 sm:text-lg border w-full lg:w-auto">
           {session?.user ? (
             <>
               <Link
