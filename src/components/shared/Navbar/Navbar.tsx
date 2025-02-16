@@ -187,7 +187,7 @@ function Navbar({ session }: { session: ISession | null }) {
 
   return (
     <nav className="max-w-screen-xl px-3 xl:px-0 mx-auto border-b-[1.5px] border-backgroundLight py-3 relative">
-      <div className="flex items-center justify-between px-4 sm:px-2 md:px-0 flex-wrap">
+      <div className="flex items-center justify-between px-4 sm:px-2 md:px-0 flex-wrap space-y-2">
         <Link href="/">
           <h1 className="text-xl sm:text-2xl font-semibold">Md Rezaul</h1>
         </Link>
@@ -196,7 +196,7 @@ function Navbar({ session }: { session: ISession | null }) {
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
-        <ul className="hidden md:flex justify-between items-center md:gap-x-10 sm:text-lg border w-full lg:w-auto">
+        <ul className="hidden md:flex justify-between items-center md:gap-x-10 sm:text-lg w-full lg:w-auto">
           {session?.user ? (
             <>
               <Link
