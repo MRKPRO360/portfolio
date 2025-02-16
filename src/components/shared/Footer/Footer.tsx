@@ -1,4 +1,3 @@
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaGithub } from 'react-icons/fa';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import {
   RiFacebookFill,
