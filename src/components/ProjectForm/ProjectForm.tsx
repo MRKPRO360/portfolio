@@ -2,12 +2,12 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Cta from '../Cta/Cta';
-import { ProjectFormInputs } from '@/types/index';
+import { ISession, ProjectFormInputs } from '@/types/index';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import { Upload } from 'lucide-react';
 
-function ProjectForm() {
+function ProjectForm({ session }: { session: ISession | null }) {
   const {
     register,
     handleSubmit,
@@ -31,6 +31,7 @@ function ProjectForm() {
         details: data.details,
         liveLink: data.liveLink,
         githubLink: data.githubLink,
+        authorEmail: session?.user?.email,
         technologies: data.technologies.split(',').map((tech) => tech.trim()), // Convert string to array
       })
     );
@@ -48,10 +49,13 @@ function ProjectForm() {
     try {
       setLoading(true);
 
-      const res = await fetch('http://localhost:5000/api/v1/projects', {
-        method: 'POST',
-        body: formData,
-      });
+      const res = await fetch(
+        'https://next-portfolio-server-bay.vercel.app/api/v1/projects',
+        {
+          method: 'POST',
+          body: formData,
+        }
+      );
 
       setLoading(false);
 

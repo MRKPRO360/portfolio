@@ -8,9 +8,12 @@ export const metadata: Metadata = {
 };
 
 async function BlogPage() {
-  const res = await fetch('http://localhost:5000/api/v1/blogs', {
-    cache: 'force-cache',
-  });
+  const res = await fetch(
+    'https://next-portfolio-server-bay.vercel.app/api/v1/blogs',
+    {
+      cache: 'force-cache',
+    }
+  );
 
   const blogs = await res.json();
 

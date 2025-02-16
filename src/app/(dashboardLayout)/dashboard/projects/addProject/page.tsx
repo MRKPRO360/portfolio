@@ -1,9 +1,13 @@
 import ProjectForm from '@/components/ProjectForm/ProjectForm';
+import { authOptions } from '@/utils/authOptions';
+import { getServerSession } from 'next-auth';
 
-function AddProjectPage() {
+async function AddProjectPage() {
+  const session = await getServerSession(authOptions);
+
   return (
     <div>
-      <ProjectForm />
+      <ProjectForm session={session} />
     </div>
   );
 }

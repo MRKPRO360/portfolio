@@ -13,7 +13,9 @@ function UpdateBlogForm({ blogId }: { blogId: string }) {
 
   useEffect(() => {
     const fetchBlog = async () => {
-      const res = await fetch(`http://localhost:5000/api/v1/blogs/${blogId}`);
+      const res = await fetch(
+        `https://next-portfolio-server-bay.vercel.app/api/v1/blogs/${blogId}`
+      );
       const blog = await res.json();
 
       reset(blog.data);
@@ -28,13 +30,16 @@ function UpdateBlogForm({ blogId }: { blogId: string }) {
     try {
       setLoading(true);
 
-      const res = await fetch(`http://localhost:5000/api/v1/blogs/${blogId}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
+      const res = await fetch(
+        `https://next-portfolio-server-bay.vercel.app/api/v1/blogs/${blogId}`,
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        }
+      );
 
       const blogInfo = await res.json();
 

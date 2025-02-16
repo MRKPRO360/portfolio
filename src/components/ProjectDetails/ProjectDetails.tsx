@@ -38,7 +38,7 @@ function ProjectDetails({
 
     try {
       const res = await fetch(
-        `http://localhost:5000/api/v1/projects/${project._id}`,
+        `https://next-portfolio-server-bay.vercel.app/api/v1/projects/${project._id}`,
         {
           method: 'DELETE',
         }
@@ -66,7 +66,7 @@ function ProjectDetails({
   };
 
   return (
-    <div className="2xl:max-w-[1526px] mx-auto p-6 space-y-6">
+    <div className="2xl:max-w-[1526px] mx-auto space-y-6">
       <div className="text-center mb-10">
         <TextHeading text={`${project.name} Features`} />
       </div>
@@ -84,7 +84,7 @@ function ProjectDetails({
           <div className="flex items-center gap-6">
             <p className="font-semibold text-lg">Type: {project.type}</p>
             <div className="flex gap-4">
-              {!isPublic ? (
+              {!isPublic && (
                 <div className="flex space-x-4">
                   <button
                     onClick={handleEdit}
@@ -98,14 +98,6 @@ function ProjectDetails({
                   >
                     <FaTrash className="mr-2" /> Delete
                   </button>
-                </div>
-              ) : (
-                <div className="mt-4" onClick={() => router.back()}>
-                  <Cta
-                    fullWidth
-                    text="Go Back
-                  "
-                  />
                 </div>
               )}
             </div>

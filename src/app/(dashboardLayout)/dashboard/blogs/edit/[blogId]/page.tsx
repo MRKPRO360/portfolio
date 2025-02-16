@@ -6,7 +6,9 @@ export async function generateMetadata({
   params: Promise<{ blogId: string }>;
 }) {
   const { blogId } = await params;
-  const res = await fetch(`http://localhost:5000/api/v1/blogs/${blogId}`);
+  const res = await fetch(
+    `https://next-portfolio-server-bay.vercel.app/api/v1/blogs/${blogId}`
+  );
 
   const blog = await res.json();
 

@@ -19,7 +19,7 @@ function UpdateProjectForm({ projectId }: { projectId: string }) {
   useEffect(() => {
     const fetchBlog = async () => {
       const res = await fetch(
-        `http://localhost:5000/api/v1/projects/${projectId}`
+        `https://next-portfolio-server-bay.vercel.app/api/v1/projects/${projectId}`
       );
       const project = await res.json();
 
@@ -36,7 +36,7 @@ function UpdateProjectForm({ projectId }: { projectId: string }) {
       setLoading(true);
 
       const res = await fetch(
-        `http://localhost:5000/api/v1/projects/${projectId}`,
+        `https://next-portfolio-server-bay.vercel.app/api/v1/projects/${projectId}`,
         {
           method: 'PATCH',
           headers: {
@@ -48,9 +48,7 @@ function UpdateProjectForm({ projectId }: { projectId: string }) {
             details: data.details,
             liveLink: data.liveLink,
             githubLink: data.githubLink,
-            technologies: data.technologies
-              .split(',')
-              .map((tech) => tech.trim()),
+            technologies: data.technologies,
           }),
         }
       );

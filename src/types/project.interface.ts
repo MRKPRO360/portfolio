@@ -19,5 +19,6 @@ export interface IProject {
   coverImage: string;
   projectImages: string[];
   technologies: string[];
+  authorEmail: string;
   isDeleted?: boolean;
 }

@@ -11,15 +11,15 @@ import Link from 'next/link';
 export default function Footer() {
   return (
     <footer className="bg-textGreen text-backgroundDark py-5">
-      <div className="max-w-6xl mx-auto px-5 grid md:grid-cols-3 gap-8">
-        {/* About Section */}
+      <div className="max-w-screen-xl mx-auto px-5 grid md:grid-cols-3 gap-8 justify-items-end">
+        {/* justify-items: self-end */}
         <div>
           <h1 className="text-xl sm:text-2xl font-semibold">Md Rezaul</h1>
-          <p className="mt-2 text-sm">
+          <p className="mt-2">
             Passionate about building beautiful and efficient web applications.
           </p>
 
-          <div className="flex items-center mt-3 gap-x-3 text-xl md:text-2xl ">
+          <div className="flex text-backgroundLight items-center mt-3 gap-x-3 text-xl md:text-2xl ">
             <RiFacebookFill className="hover:text-backgroundDark transform hover:scale-125 transition duration-300 cursor-pointer" />
             <RiLinkedinFill className="hover:text-backgroundDark transform hover:scale-125 transition duration-300 cursor-pointer" />
             <RiGithubFill className="hover:text-backgroundDark transform hover:scale-125 transition duration-300 cursor-pointer" />
@@ -28,26 +28,26 @@ export default function Footer() {
         </div>
 
         {/* Quick Links */}
-        <div>
+        <div className="justify-self-center">
           <h2 className="text-lg font-bold">Quick Links</h2>
           <ul className="mt-2 space-y-2">
             <li>
-              <a href="#" className="hover:text-blue-400 transition">
+              <a href="#" className="hover:font-semibold transition">
                 Home
               </a>
             </li>
             <li>
-              <a href="#about" className="hover:text-blue-400 transition">
+              <a href="#about" className="hover:font-semibold transition">
                 About
               </a>
             </li>
             <li>
-              <Link href="/project" className="hover:text-blue-400 transition">
+              <Link href="/projects" className="hover:font-semibold transition">
                 Project
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-blue-400 transition">
+              <Link href="/contact" className="hover:font-semibold transition">
                 Contact
               </Link>
             </li>

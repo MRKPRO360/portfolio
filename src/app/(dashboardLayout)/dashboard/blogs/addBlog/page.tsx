@@ -1,9 +1,12 @@
 import AddBlogForm from '@/components/AddBlogForm/AddBlogForm';
+import { authOptions } from '@/utils/authOptions';
+import { getServerSession } from 'next-auth';
 
-const AddBlog = () => {
+const AddBlog = async () => {
+  const session = await getServerSession(authOptions);
   return (
     <div>
-      <AddBlogForm />
+      <AddBlogForm session={session} />
     </div>
   );
 };

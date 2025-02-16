@@ -1,5 +1,5 @@
 'use client';
-import { BlogFormInput } from '@/types';
+import { BlogFormInput, ISession } from '@/types';
 import { useForm } from 'react-hook-form';
 import Cta from '../Cta/Cta';
 import { useState } from 'react';
@@ -7,7 +7,7 @@ import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import { Upload } from 'lucide-react';
 
-function AddBlogForm() {
+function AddBlogForm({ session }: { session: ISession | null }) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const {
@@ -28,7 +28,8 @@ function AddBlogForm() {
         title: data.title,
         content: data.content,
         tag: data.tag,
-        author: data.author,
+        author: session?.user?.name,
+        authorEmail: session?.user?.email,
       })
     );
 
@@ -40,10 +41,13 @@ function AddBlogForm() {
     try {
       setLoading(true);
 
-      const res = await fetch('http://localhost:5000/api/v1/blogs', {
-        method: 'POST',
-        body: formData,
-      });
+      const res = await fetch(
+        'https://next-portfolio-server-bay.vercel.app/api/v1/blogs',
+        {
+          method: 'POST',
+          body: formData,
+        }
+      );
 
       const blogInfo = await res.json();
 
@@ -91,19 +95,6 @@ function AddBlogForm() {
           />
           {errors.content && (
             <p className="text-red-500 text-sm">{errors.content.message}</p>
-          )}
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium">Author</label>
-          <input
-            type="text"
-            {...register('author', { required: 'A blog must have a author' })}
-            className="border p-2 w-full rounded text-backgroundDark "
-            placeholder="Auhtor name exmp. James"
-          />
-          {errors.author && (
-            <p className="text-red-500 text-sm">{errors.author.message}</p>
           )}
         </div>
 

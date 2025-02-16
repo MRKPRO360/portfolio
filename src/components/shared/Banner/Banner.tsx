@@ -1,3 +1,6 @@
+'use client';
+
+import { motion } from 'framer-motion';
 import {
   RiFacebookFill,
   RiGithubFill,
@@ -36,6 +39,7 @@ function Banner() {
               <br />
               <span>Developer</span>
             </h1>
+
             <p className="mt-4 mb-3 md:my-0">
               Web developer based in Bangladesh. I am adventurous person and I
               am ready for the next challenge!

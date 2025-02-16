@@ -21,13 +21,16 @@ function ContactPage() {
     setLoading(true);
 
     try {
-      const res = await fetch('http://localhost:5000/api/v1/mails', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
+      const res = await fetch(
+        'https://next-portfolio-server-bay.vercel.app/api/v1/mails',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        }
+      );
 
       const message = await res.json();
 

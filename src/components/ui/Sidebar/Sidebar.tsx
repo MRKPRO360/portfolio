@@ -2,11 +2,37 @@
 import { useEffect, useRef, useState } from 'react';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { LiaTimesSolid } from 'react-icons/lia';
-import { ISidebarItems } from '../../../types/index';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-const Sidebar = ({ items }: { items: ISidebarItems[] }) => {
+const sidebarItems = [
+  {
+    text: 'Home',
+    path: '/',
+  },
+  {
+    text: 'Blogs',
+    path: '/dashboard/blogs',
+  },
+  {
+    text: 'Add Blog',
+    path: '/dashboard/blogs/addBlog',
+  },
+  {
+    text: 'Projects',
+    path: '/dashboard/projects',
+  },
+  {
+    text: 'Add Project',
+    path: '/dashboard/projects/addProject',
+  },
+  {
+    text: 'Messages',
+    path: '/dashboard/messages',
+  },
+];
+
+const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
   const pathName = usePathname();
@@ -50,7 +76,7 @@ const Sidebar = ({ items }: { items: ISidebarItems[] }) => {
   md:relative md:translate-x-0 transition-transform `}
       >
         <ul className="mt-4 flex flex-col space-y-2">
-          {items.map((el) => (
+          {sidebarItems.map((el) => (
             <Link
               key={el.text}
               href={el.path}

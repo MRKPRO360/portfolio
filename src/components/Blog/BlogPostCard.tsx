@@ -22,7 +22,12 @@ const BlogPostCard = ({
         />
       </div>
       <div className="p-5">
-        <h2 className="text-xl font-bold ">{post.title}</h2>
+        <h2 className="text-xl font-bold ">
+          {' '}
+          {post.title.length > 25
+            ? post.title.slice(0, 25).padEnd(28, '.')
+            : post.content}
+        </h2>
         <p className=" mt-2 line-clamp-3 h-12">
           {post.content.length > 50
             ? post.content.slice(0, 50).padEnd(53, '.')

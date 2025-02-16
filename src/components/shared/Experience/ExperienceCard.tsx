@@ -8,13 +8,13 @@ function ExperienceCard({
   return (
     <div>
       <li className="flex items-start gap-4">
-        <div className="bg-textGreen w-6 h-6 rounded-full mt-2 flex items-center justify-center">
+        <div className="lg:bg-textGreen w-6 md:h-6 rounded-full mt-2 flex items-center justify-center">
           <FaCheck />
         </div>
         <div className="space-y-1">
           <h4 className="text-lg font-semibold">{info.title}</h4>
           <div className="flex items-center gap-2">
-            <FaCalendarCheck className="text-textGreen text-md" />
+            <FaCalendarCheck className="text-textGreen " />
             <p className="text-sm text-gray-400">{info.year}</p>
           </div>
           <p className="text-gray-300">{info.description}</p>

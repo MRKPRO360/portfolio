@@ -15,5 +15,6 @@ export interface IBlog {
   tag: string;
   isDeleted?: boolean;
   author: string;
+  authorEmail: string;
   createdAt: string;
 }

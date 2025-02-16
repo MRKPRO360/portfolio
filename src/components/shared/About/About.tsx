@@ -50,7 +50,11 @@ function About() {
             totam laborum velit! Veritatis iusto temporibus, hic atque qui
             necessitatibus tenetur optio magnam blanditiis porro quaerat ab
           </p>
-          <Cta text="Download Resume" />
+          <Cta
+            href="/doc/cv.pdf"
+            download="Md.Rezaul Karim.pdf"
+            text="Download CV"
+          />
         </div>
       </div>
     </div>

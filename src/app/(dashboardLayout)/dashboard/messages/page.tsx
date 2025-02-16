@@ -23,7 +23,9 @@ import TextHeading from '@/components/TextHeading/TextHeading';
 // ];
 
 async function MessagesPage() {
-  const res = await fetch('http://localhost:5000/api/v1/mails');
+  const res = await fetch(
+    'https://next-portfolio-server-bay.vercel.app/api/v1/mails'
+  );
   const messages = await res.json();
 
   return (

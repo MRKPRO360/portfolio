@@ -2,7 +2,9 @@ import BlogDetails from '@/components/Blog/BlogDetails';
 import { IBlog } from '@/types';
 
 export async function generateStaticParams() {
-  const res = await fetch('http://localhost:5000/api/v1/blogs');
+  const res = await fetch(
+    'https://next-portfolio-server-bay.vercel.app/api/v1/blogs'
+  );
 
   const blog = await res.json();
 
@@ -16,7 +18,9 @@ export async function generateMetadata({
   params: Promise<{ blogId: string }>;
 }) {
   const { blogId } = await params;
-  const res = await fetch(`http://localhost:5000/api/v1/blogs/${blogId}`);
+  const res = await fetch(
+    `https://next-portfolio-server-bay.vercel.app/api/v1/blogs/${blogId}`
+  );
 
   const blog = await res.json();
 
@@ -33,7 +37,9 @@ async function BlogDetailsPage({
 }) {
   const { blogId } = await params;
 
-  const res = await fetch(`http://localhost:5000/api/v1/blogs/${blogId}`);
+  const res = await fetch(
+    `https://next-portfolio-server-bay.vercel.app/api/v1/blogs/${blogId}`
+  );
 
   const blog = await res.json();
 

@@ -7,7 +7,6 @@ import Modal from '../shared/Modal/Modal';
 import { useState } from 'react';
 import { toast } from 'sonner';
 import Cta from '../Cta/Cta';
-import Link from 'next/link';
 
 const BlogDetails = ({
   post,
@@ -34,7 +33,7 @@ const BlogDetails = ({
 
     try {
       const res = await fetch(
-        `http://localhost:5000/api/v1/blogs/${post._id}`,
+        `https://next-portfolio-server-bay.vercel.app/api/v1/blogs/${post._id}`,
         {
           method: 'DELETE',
         }

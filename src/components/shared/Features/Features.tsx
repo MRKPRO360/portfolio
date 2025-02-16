@@ -33,7 +33,9 @@ function Features() {
         <div className="md:w-[400px]">
           <TextHeading text="Captivating Portfolios that A Lasting Impression" />
         </div>
-        <BtnGhost />
+        <div className="hidden md:block">
+          <BtnGhost />
+        </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5  ">
         {cardItems.map((item, index) => (
