@@ -15,7 +15,7 @@ function AddBlogForm({ session }: { session: ISession | null }) {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<BlogFormInput>();
+  } = useForm<BlogFormInput>({ mode: 'onBlur' });
 
   const onSubmit = async (data: BlogFormInput) => {
     const toastId = toast.loading('Adding ...');
@@ -40,7 +40,6 @@ function AddBlogForm({ session }: { session: ISession | null }) {
 
     try {
       setLoading(true);
-
       const res = await fetch(
         'https://next-portfolio-server-bay.vercel.app/api/v1/blogs',
         {
@@ -84,11 +83,15 @@ function AddBlogForm({ session }: { session: ISession | null }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium">Content</label>
+          <label className="block text-sm font-medium">Details</label>
           <textarea
             placeholder="Some description..."
             {...register('content', {
-              required: 'A blog should have some descriptions',
+              required: 'Details is required!',
+              minLength: {
+                value: 10,
+                message: 'Details should be at least 10 characters',
+              },
             })}
             className="border p-2 w-full rounded text-backgroundDark "
             rows={4}

@@ -112,6 +112,7 @@ function UpdateProjectForm({ projectId }: { projectId: string }) {
             {...register('details', {
               required: 'Project details are required',
             })}
+            rows={4}
             placeholder="Your project details"
             className="border p-2 w-full rounded text-backgroundDark "
           />

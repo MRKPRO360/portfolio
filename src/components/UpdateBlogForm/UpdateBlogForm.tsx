@@ -9,7 +9,12 @@ import { useRouter } from 'next/navigation';
 function UpdateBlogForm({ blogId }: { blogId: string }) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const { register, handleSubmit, reset } = useForm<BlogFormInput>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<BlogFormInput>({ mode: 'onBlur' });
 
   useEffect(() => {
     const fetchBlog = async () => {
@@ -66,30 +71,32 @@ function UpdateBlogForm({ blogId }: { blogId: string }) {
           <label className="block text-sm font-medium">Title</label>
           <input
             type="text"
-            {...register('title')}
+            {...register('title', { required: 'A title must have a title' })}
             className="border p-2 w-full rounded text-backgroundDark "
             placeholder="Blog title exmp. Node with code"
           />
+          {errors.title && (
+            <p className="text-red-500 text-sm">{errors.title.message}</p>
+          )}
         </div>
 
         <div>
-          <label className="block text-sm font-medium">Content</label>
+          <label className="block text-sm font-medium">Details</label>
           <textarea
             placeholder="Some description..."
-            {...register('content')}
+            {...register('content', {
+              required: 'Details is required!',
+              minLength: {
+                value: 10,
+                message: 'Details should be at least 10 characters',
+              },
+            })}
             className="border p-2 w-full rounded text-backgroundDark "
             rows={4}
           />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium">Author</label>
-          <input
-            type="text"
-            {...register('author')}
-            className="border p-2 w-full rounded text-backgroundDark "
-            placeholder="Auhtor name exmp. James"
-          />
+          {errors.content && (
+            <p className="text-red-500 text-sm">{errors.content.message}</p>
+          )}
         </div>
 
         <div>

@@ -113,6 +113,7 @@ function ProjectForm({ session }: { session: ISession | null }) {
         <label className="block mb-2">
           Details (comma separated):
           <textarea
+            rows={4}
             {...register('details', {
               required: 'Project details are required',
             })}
